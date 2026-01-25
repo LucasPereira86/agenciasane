@@ -204,8 +204,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     firstError.querySelector('input, select').focus();
                 }
             } else {
+                e.preventDefault(); // Prevent default submission
+
                 // Show loading state
                 const submitBtn = contactForm.querySelector('.btn-submit');
+                const originalBtnContent = submitBtn.innerHTML;
+
                 submitBtn.innerHTML = `
                     <svg class="spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;">
                         <circle cx="12" cy="12" r="10" stroke-opacity="0.3"/>
@@ -214,6 +218,38 @@ document.addEventListener('DOMContentLoaded', function () {
                     <span>Enviando...</span>
                 `;
                 submitBtn.disabled = true;
+
+                // Prepare FormData
+                const formData = new FormData(contactForm);
+
+                // Submit via Fetch
+                fetch("https://formsubmit.co/ajax/sane.ads.sites@gmail.com", {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        }
+                        throw new Error('Falha no envio');
+                    })
+                    .then(data => {
+                        // Success
+                        showSuccessMessage();
+                        contactForm.reset();
+                        submitBtn.innerHTML = originalBtnContent;
+                        submitBtn.disabled = false;
+                    })
+                    .catch(error => {
+                        // Error
+                        console.error('Erro:', error);
+                        alert("Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente ou entre em contato pelo telefone.");
+                        submitBtn.innerHTML = originalBtnContent;
+                        submitBtn.disabled = false;
+                    });
             }
         });
     }
