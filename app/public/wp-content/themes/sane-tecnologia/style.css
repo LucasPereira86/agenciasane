@@ -380,12 +380,10 @@ h6 {
 
 /* Logo Image Styles */
 .logo-img {
-    height: 220px;
+    height: 80px;
     width: auto;
     display: block;
     object-fit: contain;
-    margin-top: -60px;
-    margin-bottom: -60px;
     transition: transform var(--transition-base);
 }
 
