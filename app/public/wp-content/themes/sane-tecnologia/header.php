@@ -26,8 +26,16 @@
     <header class="header" id="header">
         <div class="container header-content">
             <a href="#inicio" class="logo">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/logo.jpg" alt="Agência SaneADS"
-                    class="logo-img">
+                <div class="logo-symbol">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                    </svg>
+                </div>
+                <div class="logo-type">
+                    <small>Agência</small>
+                    <span>Sane<strong class="logo-accent">ADS</strong></span>
+                </div>
             </a>
 
             <nav class="nav" id="nav">

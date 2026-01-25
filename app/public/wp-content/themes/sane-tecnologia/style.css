@@ -348,43 +348,74 @@ h6 {
     padding: var(--spacing-3) 0;
 }
 
+/* Logo Styles - Modern Vector Implementation */
 .logo {
     display: flex;
     align-items: center;
-    gap: var(--spacing-2);
-    flex-shrink: 0;
+    gap: 12px;
+    text-decoration: none;
+    transition: opacity var(--transition-base);
 }
 
-.logo-icon {
-    width: 40px;
-    height: 40px;
+.logo:hover {
+    opacity: 0.9;
+}
+
+.logo-symbol {
+    width: 42px;
+    height: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--gradient-accent);
-    color: var(--white);
-    font-size: var(--font-size-xl);
-    font-weight: 800;
-    border-radius: var(--radius-lg);
-}
-
-.logo-text {
-    font-size: var(--font-size-xl);
-    font-weight: 700;
-    color: var(--white);
-}
-
-.logo-highlight {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
     color: var(--accent);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform var(--transition-base), border-color var(--transition-base);
 }
 
-/* Logo Image Styles */
-.logo-img {
-    height: 80px;
-    width: auto;
-    display: block;
-    object-fit: contain;
-    transition: transform var(--transition-base);
+.logo:hover .logo-symbol {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+}
+
+.logo-type {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-type small {
+    font-size: 0.75rem;
+    color: var(--neutral-400);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: -2px;
+}
+
+.logo-type strong {
+    font-weight: 800;
+}
+
+.logo-accent {
+    color: var(--accent);
+    position: relative;
+    display: inline-block;
+}
+
+/* Footer Logo Adjustments */
+.footer-logo .logo-symbol {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.footer-logo .logo-type {
+    font-size: 1.75rem;
 }
 
 .logo:hover .logo-img {
